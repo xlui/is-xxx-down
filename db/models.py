@@ -2,6 +2,8 @@ from datetime import datetime
 
 from flask_sqlalchemy import SQLAlchemy
 
+from config.config import root_key
+
 db = SQLAlchemy()
 
 
@@ -30,3 +32,10 @@ class Core(db.Model):
         return f'Core[id={self.id}, key={self.key}, title={self.title}, ' \
                f'url={self.url}, is_down={self.is_down}, ' \
                f'create_time={self.create_time}, update_time={self.update_time}]'
+
+
+def get_core():
+    core = Core.query.filter_by(key=root_key).first()
+    if not core:
+        raise RuntimeError('Failed to load core config!')
+    return core

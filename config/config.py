@@ -16,12 +16,12 @@ if not domain:
     print(f'DOMAIN is invalid. domain:{domain}')
     sys.exit(1002)
 
-title = os.environ.get('TITLE') or ''
+title = os.environ.get('TITLE') or 'Google'
 if not title or len(title) == 0:
     print(f'TITLE is invalid. title:{title}')
     sys.exit(1003)
 
-url = os.environ.get('URL') or ''
+url = os.environ.get('URL') or 'https://google.com'
 if not url or len(url) == 0:
     print(f'URL is invalid. url:{url}')
     sys.exit(1004)
@@ -31,6 +31,7 @@ class Config:
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     SQLALCHEMY_RECORD_QUERIES = True
     SQLALCHEMY_COMMIT_ON_TEARDOWN = True
+    SCHEDULER_API_ENABLED = True
     SQLALCHEMY_DATABASE_URI = f'sqlite:///{db_file}'
 
     @staticmethod
