@@ -1,9 +1,9 @@
 import os
-import pathlib
 import sys
 
 work_dir = os.path.dirname(os.path.abspath(__file__))
-db_file = '/data/is-xxx-down/data.sqlite'
+db_dir = os.path.join(os.path.dirname(work_dir), 'db')
+db_file = os.path.join(db_dir, 'data.sqlite')
 root_key = 'root'
 
 secret = os.environ.get('SECRET') or 'gRu4FmQ10xEr2TY5Ko7GZLtsjbfMvCy3ISpBdeNzVU9qaclkJAO8HwhiWD6XnP'
@@ -31,7 +31,7 @@ class Config:
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     SQLALCHEMY_RECORD_QUERIES = True
     SQLALCHEMY_COMMIT_ON_TEARDOWN = True
-    SQLALCHEMY_DATABASE_URI = f'sqlite:///data.sqlite'
+    SQLALCHEMY_DATABASE_URI = f'sqlite:///{db_file}'
 
     @staticmethod
     def init_app(app):

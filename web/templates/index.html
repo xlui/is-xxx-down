@@ -12,16 +12,14 @@
     <meta property="og:title" content="Is {{ title }} down?">
     <meta property="og:description" content="Nope.">
     <meta property="og:type" content="website">
-    <!-- TODO: 页面的链接 -->
-    <meta property="og:url" content="https://github.com/xlui">
 </head>
 <body>
-<div id="top">Is {{ title }} down?</div>
+<div id="top">Is <a href="{{ url }}" target="_blank">{{ title }}</a> down?</div>
 <div id="main">
     {% if is_down %}
-    YES!
+        YES!
     {% else %}
-    Nope.
+        Nope.
     {% endif %}
 </div>
 
