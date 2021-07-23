@@ -16,7 +16,7 @@ if not url or len(url) == 0:
     print(f'URL is invalid. url:{url}')
     sys.exit(1002)
 
-support_subscribe = os.environ.get('SUPPORT_SUBSCRIBE') or False
+support_subscribe = ('FALSE' == os.environ.get('SUPPORT_SUBSCRIBE').upper()) or False
 
 mail_server = os.environ.get('MAIL_SERVER')
 if not mail_server or len(mail_server) == 0:
