@@ -1,6 +1,9 @@
-from flask import render_template, request, abort
+import arrow
+from flask import render_template, request, abort, current_app
 
 from db.models import get_core, Notification, db
+from job.check_scheduler import check_website
+from mail import send_mail
 from . import main
 
 
@@ -29,3 +32,16 @@ def subscribe():
         db.session.add(notification)
         db.session.commit()
         return 'Success', 200
+
+
+@main.route('/check', methods=['GET', 'POST'])
+def check():
+    check_website(current_app)
+    return 'OK, I have checked the website again.'
+
+
+@main.route('/send/<email>', methods=['GET'])
+def send(email):
+    send_mail(
+        f'test 123\nnow: {arrow.now().format(arrow.FORMAT_ATOM)} ',
+        [email])

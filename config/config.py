@@ -18,6 +18,26 @@ if not url or len(url) == 0:
 
 support_subscribe = os.environ.get('SUPPORT_SUBSCRIBE') or False
 
+mail_server = os.environ.get('MAIL_SERVER')
+if not mail_server or len(mail_server) == 0:
+    print(f'Mail server is invalid. mail_server:{mail_server}')
+    sys.exit(1003)
+
+mail_port = os.environ.get('MAIL_PORT')
+if not mail_port or len(mail_port) == 0:
+    print(f'Mail port is invalid. mail_port:{mail_port}')
+    sys.exit(1004)
+
+mail_username = os.environ.get('MAIL_USERNAME')
+if not mail_username or len(mail_username) == 0:
+    print(f'Mail username is invalid. mail_username:{mail_username}')
+    sys.exit(1005)
+
+mail_password = os.environ.get('MAIL_PASSWORD')
+if not mail_password or len(mail_password) == 0:
+    print(f'Mail password is invalid. mail_password:{mail_password}')
+    sys.exit(1006)
+
 
 class Config:
     SQLALCHEMY_TRACK_MODIFICATIONS = False
@@ -25,6 +45,12 @@ class Config:
     SQLALCHEMY_COMMIT_ON_TEARDOWN = True
     SCHEDULER_API_ENABLED = True
     SQLALCHEMY_DATABASE_URI = f'sqlite:///{db_file}'
+    MAIL_SERVER = mail_server
+    MAIL_PORT = mail_port
+    MAIL_USE_TLS = True
+    MAIL_USERNAME = mail_username
+    MAIL_PASSWORD = mail_password
+    MAIL_DEFAULT_SENDER = mail_username
 
     @staticmethod
     def init_app(app):
