@@ -25,12 +25,13 @@ class Core(db.Model):
     title = db.Column(db.VARCHAR(128), nullable=False)
     url = db.Column(db.VARCHAR(256), nullable=False)
     is_down = db.Column(db.BOOLEAN, default=False, nullable=False)
+    support_subscribe = db.Column(db.BOOLEAN, default=False, nullable=False)
     create_time = db.Column(db.DATETIME, default=datetime.now)
     update_time = db.Column(db.DATETIME, default=datetime.now, onupdate=datetime.now)
 
     def __repr__(self):
         return f'Core[id={self.id}, key={self.key}, title={self.title}, ' \
-               f'url={self.url}, is_down={self.is_down}, ' \
+               f'url={self.url}, is_down={self.is_down}, support_subscribe={self.support_subscribe}' \
                f'create_time={self.create_time}, update_time={self.update_time}]'
 
 

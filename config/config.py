@@ -6,25 +6,17 @@ db_dir = os.path.join(os.path.dirname(work_dir), 'db')
 db_file = os.path.join(db_dir, 'data.sqlite')
 root_key = 'root'
 
-secret = os.environ.get('SECRET') or 'gRu4FmQ10xEr2TY5Ko7GZLtsjbfMvCy3ISpBdeNzVU9qaclkJAO8HwhiWD6XnP'
-if not secret or len(secret) == 0:
-    print(f'SECRET is invalid. secret:{secret}')
-    sys.exit(1001)
-
-domain = os.environ.get('DOMAIN') or 'http://127.0.0.1:5000/'
-if not domain:
-    print(f'DOMAIN is invalid. domain:{domain}')
-    sys.exit(1002)
-
 title = os.environ.get('TITLE') or 'Google'
 if not title or len(title) == 0:
     print(f'TITLE is invalid. title:{title}')
-    sys.exit(1003)
+    sys.exit(1001)
 
 url = os.environ.get('URL') or 'https://google.com'
 if not url or len(url) == 0:
     print(f'URL is invalid. url:{url}')
-    sys.exit(1004)
+    sys.exit(1002)
+
+support_subscribe = os.environ.get('SUPPORT_SUBSCRIBE') or False
 
 
 class Config:

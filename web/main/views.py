@@ -1,10 +1,31 @@
-from flask import render_template
+from flask import render_template, request, abort
 
-from db.models import get_core
+from db.models import get_core, Notification, db
 from . import main
 
 
 @main.route('/', methods=['GET'])
 def index():
     core = get_core()
-    return render_template('index.html', title=core.title, url=core.url, is_down=core.is_down)
+    return render_template(
+        'index.html',
+        title=core.title,
+        url=core.url,
+        is_down=core.is_down,
+        support_subscribe=core.support_subscribe
+    )
+
+
+@main.route('/subscribe', methods=['POST'])
+def subscribe():
+    email = request.form['email']
+    if not email:
+        return abort(401, 'Failed to parse email')
+    notification = Notification.query.filter_by(email=email).first()
+    if notification:
+        return abort(400, 'You have already subscribed.')
+    else:
+        notification = Notification(email=email)
+        db.session.add(notification)
+        db.session.commit()
+        return 'Success', 200

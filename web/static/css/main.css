@@ -27,15 +27,23 @@ div {
     margin: 0 auto;
 }
 
-div#main {
-    margin-top: 10px;
-    width: 350px;
-}
-
 div#top {
     margin-top: 50px;
     width: 350px;
     font-size: 9pt;
+}
+
+div#main {
+    margin-top: 10px;
+    width: 500px;
+}
+
+div#notify {
+    font-size: 9pt;
+}
+
+div#notify input#email {
+    width: 120px;
 }
 
 blockquote {
