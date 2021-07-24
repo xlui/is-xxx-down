@@ -16,8 +16,6 @@ if not url or len(url) == 0:
     print(f'URL is invalid. url:{url}')
     sys.exit(1002)
 
-support_subscribe = str(os.environ.get('SUPPORT_SUBSCRIBE') or False).upper() == 'FALSE'
-
 interval = os.environ.get('INTERVAL') or 3600
 
 

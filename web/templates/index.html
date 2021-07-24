@@ -18,15 +18,6 @@
 <div id="main">
     {% if is_down %}
         YES!
-        {% if support_subscribe %}
-            <div id="notify">
-                <form action="/subscribe" method="post">
-                    <label for="email">Get notified when {{ title }} is up again:</label>
-                    <input id="email" type="email" name="email" placeholder="Email"/>
-                    <input id="submit" type="submit" value="Submit">
-                </form>
-            </div>
-        {% endif %}
     {% else %}
         Nope.
     {% endif %}

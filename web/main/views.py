@@ -12,8 +12,7 @@ def index():
         'index.html',
         title=core.title,
         url=core.url,
-        is_down=core.is_down,
-        support_subscribe=core.support_subscribe
+        is_down=core.is_down
     )
 
 
