@@ -5,7 +5,6 @@ from config.config import Config
 from config.config import root_key, title, url
 from db.models import db, Core
 from job import scheduler
-from mail import mail
 
 
 def create_app():
@@ -16,7 +15,6 @@ def create_app():
     bootstrap.init_app(app)
     db.init_app(app)
     scheduler.init_app(app)
-    mail.init_app(app)
 
     with app.app_context():
         print(f'uri: {app.config["SQLALCHEMY_DATABASE_URI"]}')
