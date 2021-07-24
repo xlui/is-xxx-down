@@ -18,6 +18,8 @@ if not url or len(url) == 0:
 
 support_subscribe = ('FALSE' == os.environ.get('SUPPORT_SUBSCRIBE').upper()) or False
 
+interval = os.environ.get('INTERVAL') or 3600
+
 
 class Config:
     SQLALCHEMY_TRACK_MODIFICATIONS = False

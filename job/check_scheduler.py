@@ -10,7 +10,7 @@ def check_website(app):
         core = get_core()
         print(core)
         try:
-            resp = requests.get(core.url, timeout=3)
+            resp = requests.get(core.url, timeout=2)
             print(f'[Checker] Successfully ping website {core.url}, resp:{resp}')
             core.is_down = False
             db.session.add(core)

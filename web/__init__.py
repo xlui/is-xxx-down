@@ -1,8 +1,7 @@
 from flask import Flask
 from flask_bootstrap import Bootstrap
 
-from config.config import Config
-from config.config import root_key, title, url
+from config.config import Config, root_key, title, url, interval
 from db.models import db, Core
 from job import scheduler
 
@@ -51,9 +50,10 @@ def create_app():
             id='check_website',
             func=check_website,
             trigger='interval',
-            seconds=500000,
+            seconds=interval,
             args=[app])
         scheduler.start()
+        check_website(app)
         print('loading scheduler...done')
 
     from .main import main
