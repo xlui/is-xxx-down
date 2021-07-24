@@ -23,7 +23,7 @@ gunicorn app:app -c gunicorn.conf.py
 ### 2. Docker Backend
 
 ```bash
-docker run --name is_vcb-s_down -p 127.0.0.1:8081:8080 -e TITLE=VCB-S -e URL=https://vcb-s.com -d akise/is-xxx-down
+docker run --name is_vcb-s_down -p 127.0.0.1:8081:8081 -e TITLE=VCB-S -e URL=https://vcb-s.com -d akise/is-xxx-down
 ```
 
 ## License
